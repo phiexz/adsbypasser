@@ -48,15 +48,13 @@
         }
 
         if (pasteInfo.paste.url) {
-          $.openLink(pasteInfo.paste.url);
-          return;
+          return pasteInfo.paste.url.link();
         }
 
         // Decrypt paste
         var raw_paste = sjcl.decrypt(paste_salt, pasteInfo.paste.text);
         if (isLink(raw_paste)) {
-          $.openLink(raw_paste);
-          return;
+          return raw_paste.link();
         }
 
         // Create paste
