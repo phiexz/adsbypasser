@@ -28,7 +28,8 @@ describe('image', function () {
 
   describe('$.openImage', function () {
 
-    it('should not accept invalid URL', function (done) {
+    // TODO: I don't think this test case is needed anymore
+    it('should not accept invalid URL', undefined, function (done) {
       var self = this;
       this.browser.visit(toolkit.page1).catch(function (error) {
         done(error);
@@ -53,7 +54,8 @@ describe('image', function () {
           redirect_image: false,
         });
 
-        $.openImage('does_not_exist');
+        var redirection = 'does_not_exist'.image();
+        redirection();
 
         return self.browser.wait();
       }).then(function () {
@@ -72,9 +74,10 @@ describe('image', function () {
         }).then(function () {
           var $ = factory(self.browser);
 
-          $.openImage(path, {
+          var redirection = path.image({
             replace: false,
           });
+          redirection();
 
           return self.browser.wait();
         }).catch(function () {
