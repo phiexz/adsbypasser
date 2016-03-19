@@ -4,6 +4,7 @@ $.register({
     path:/^\/link\/\?.*$/
   },
   ready:function(){
+    'use strict';
     return $('a.btn.a').href.link();
   }
 });
