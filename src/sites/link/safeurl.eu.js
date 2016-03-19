@@ -11,7 +11,7 @@ $.register({
       throw new _.AdsBypasserError('script content changed');
     }
     directUrl = directUrl[1];
-    $.openLink(directUrl);
+    return directUrl.link();
   },
 });
 

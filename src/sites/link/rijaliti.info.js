@@ -4,7 +4,7 @@ $.register({
     'use strict';
 
     var a = $('#main td[align="center"] a');
-    $.openLink(a.href);
+    return a.href.link();
   },
 });
 

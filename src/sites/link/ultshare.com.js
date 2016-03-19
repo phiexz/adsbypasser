@@ -13,7 +13,7 @@ $.register({
     // Bypass all interstitial pages, cookie check is only made on page 1 and 2 :)
     var directLink = '/3-' + linkId;
 
-    $.openLink(directLink);
+    return directLink.link();
   },
 });
 

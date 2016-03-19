@@ -4,7 +4,7 @@ $.register({
     'use strict';
 
     var i = $('img.bilde');
-    $.openLink(i.src);
+    return i.src.link();
   },
 });
 

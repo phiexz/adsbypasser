@@ -5,11 +5,10 @@ $.register({
 
     var i = $.$('#boring');
     if (i) {
-      $.openLink(i.src);
-      return;
+      return i.src.link();
     }
     i = $('table td:nth-child(1) a');
-    $.openLink(i.href);
+    return i.href.link();
   },
 });
 

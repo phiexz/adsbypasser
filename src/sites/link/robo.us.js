@@ -7,7 +7,7 @@ $.register({
 
     $.removeNodes('iframe');
     var url = atob($.window.fl);
-    $.openLink(url);
+    return url.link();
   },
 });
 

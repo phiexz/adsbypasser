@@ -11,15 +11,13 @@ $.register({
     // If broken domain then redirect to real domain
     if (m.host[2] !== realHost) {
       var realURL = location.href.replace(m.host[2], realHost);
-      $.openLink(realURL);
-      return;
+      return realURL.link();
     }
 
     // Iframe redirection
     var f = $.$('iframe[name=ifram]');
     if (f) {
-      $.openLink(f.src);
-      return;
+      return f.src.link();
     }
 
     // Captcha not supported

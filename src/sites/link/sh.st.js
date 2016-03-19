@@ -16,17 +16,19 @@
       header['X-NewRelic-ID'] = X_NewRelic_ID;
     }
 
-    var i = setInterval(function () {
-      $.get('/shortest-url/end-adsession', data, header).then(function (text) {
+    return _.try(1000, function () {
+      return $.get('/shortest-url/end-adsession', data, header).then(function (text) {
         var r = _.parseJSON(text);
-        if (r.status == "ok" && r.destinationUrl) {
-          clearInterval(i);
-          $.removeAllTimer();
-          var url = decodeURIComponent(r.destinationUrl);
-          $.openLink(url);
+        if (r.status === 'ok' && r.destinationUrl) {
+          return r.destinationUrl;
         }
+        return _.none;
       });
-    }, 1000);
+    }).then(function (url) {
+      $.removeAllTimer();
+      url = decodeURIComponent(url);
+      return url.link();
+    });
   }
 
   var hostRules = /^sh\.st|(dh10thbvu|u2ks|jnw0)\.com|digg\.to$/;
@@ -37,23 +39,24 @@
       path: /^\/freeze\/.+/,
     },
     ready: function () {
-      // Wait for the timer (server-side check)
-      var o = new MutationObserver(function (mutations) {
-        mutations.forEach(function (mutation) {
-          // If the button is now active
-          if (mutation.target.getAttribute('class').match(/active/)) {
-            o.disconnect();
-            // Then we can redirect
-            $.openLink(mutation.target.href);
-          }
+      return _.D(function (resolve, reject) {
+        // Wait for the timer (server-side check)
+        var o = new MutationObserver(function (mutations) {
+          mutations.forEach(function (mutation) {
+            // If the button is now active
+            if (mutation.target.getAttribute('class').match(/active/)) {
+              o.disconnect();
+              // Then we can redirect
+              resolve(mutation.target.href.link());
+            }
+          });
+        });
+
+        o.observe($('#skip_button'), {
+          attributes: true,
+          attributeFilter: ['class'],
         });
       });
-
-      o.observe($('#skip_button'), {
-        attributes: true,
-        attributeFilter: ['class'],
-      });
-
     },
   });
 
@@ -66,7 +69,7 @@
       var url = window.location.pathname + window.location.search + window.location.hash;
       url = url.match(/(https?:\/\/.*)$/);
       url = url[1];
-      $.openLink(url);
+      return url.link();
     },
   });
 
@@ -84,22 +87,25 @@
 
       var m = $.searchScripts(/sessionId: "([\d\w]+)",/);
       if (m) {
-        afterGotSessionId(m[1]);
-        return;
+        return afterGotSessionId(m[1]);
       }
 
       // script not loaded yet, wait until it appears
-      var o = new MutationObserver(function (mutations) {
-        mutations.forEach(function (mutation) {
-          var m = $.searchScripts(/sessionId: "([\d\w]+)",/);
-          if (m) {
-            o.disconnect();
-            afterGotSessionId(m[1]);
-          }
+      return _.D(function (resolve, reject) {
+        var o = new MutationObserver(function (mutations) {
+          mutations.forEach(function (mutation) {
+            var m = $.searchScripts(/sessionId: "([\d\w]+)",/);
+            if (m) {
+              o.disconnect();
+              resolve(m[1]);
+            }
+          });
         });
-      });
-      o.observe(document.body, {
-        childList: true,
+        o.observe(document.body, {
+          childList: true,
+        });
+      }).then(function (sessionId) {
+        return afterGotSessionId(sessionId);
       });
     },
   });

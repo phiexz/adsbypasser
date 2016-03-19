@@ -7,7 +7,7 @@ $.register({
     'use strict';
 
     var url = atob(m.path[1]);
-    $.openLink(url);
+    return url.link();
   },
 });
 

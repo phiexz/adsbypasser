@@ -4,7 +4,7 @@ $.register({
     'use strict';
 
     var a = $('#redir_btn');
-    $.openLink(a.href);
+    return a.href.link();
   },
 });
 

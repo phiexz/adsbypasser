@@ -7,7 +7,7 @@ $.register({
 
     var f = $('frame[name=main]');
 
-    $.openLink(f.src);
+    return f.src.link();
   },
 });
 

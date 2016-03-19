@@ -14,7 +14,7 @@ $.register({
       return;
     }
     i = $('iframe');
-    $.openLink(i.src);
+    return i.src.link();
   },
 });
 

@@ -43,7 +43,7 @@ $.register({
         _.warn('script changed');
         return;
       }
-      $.openLink(m[1]);
+      return m[1].link();
     });
   },
 });

@@ -11,7 +11,7 @@ $.register({
     var m = $.searchScripts(/action="([^"]+)"/);
     m = m[1];
 
-    $.openLink(m);
+    return m.link();
   },
 });
 
@@ -30,7 +30,7 @@ $.register({
 
     _.wait(m).then(function () {
       var a = $('#skip-ad');
-      $.openLink(a.href);
+      return a.href.link();
     });
   },
 });

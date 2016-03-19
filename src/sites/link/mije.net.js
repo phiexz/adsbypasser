@@ -8,7 +8,7 @@ $.register({
 
     var url = atob(m.path[1]);
     // assuming all url is valid
-    $.openLink(url);
+    return url.link();
   },
 });
 

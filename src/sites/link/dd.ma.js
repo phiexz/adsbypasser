@@ -7,12 +7,11 @@ $.register({
 
     var i = $.$('#mainframe');
     if (i) {
-      $.openLink(i.src);
-      return;
+      return i.src.link();
     }
 
     var a = $('#btn_open a');
-    $.openLink(a.href);
+    return a.href.link();
   },
 });
 

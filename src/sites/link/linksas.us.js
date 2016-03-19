@@ -38,7 +38,7 @@ $.register({
       });
     }).then(function (data) {
       data = _.parseJSON(data);
-      $.openLink(data.message);
+      return data.message.link();
     }).catch(function (e) {
       _.warn(e);
     });
@@ -70,7 +70,7 @@ $.register({
       }
       lastURL = matched + url.substring(pattern.lastIndex);
     }
-    $.openLink(lastURL);
+    return lastURL.link();
   },
 });
 

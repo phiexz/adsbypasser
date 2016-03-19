@@ -6,7 +6,7 @@ $.register({
     'use strict';
 
     var o = $('#directlink');
-    $.openLink(o.href);
+    return o.href.link();
   },
 });
 

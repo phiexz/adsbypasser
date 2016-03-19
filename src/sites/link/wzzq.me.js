@@ -4,12 +4,9 @@ $.register({
   },
   ready: function () {
     'use strict';
-    try {
-      var l = $('#img_loading_table2  div.wz_img_hit a[target=_blank]').href;
-      $.openLink(l);
-    } catch (e) {
-      // Not on a redirection link
-    }
+
+    var l = $('#img_loading_table2  div.wz_img_hit a[target=_blank]');
+    return l.href.link();
   },
 });
 

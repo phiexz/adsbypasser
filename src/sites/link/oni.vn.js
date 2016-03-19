@@ -13,8 +13,8 @@ $.register({
     }
     data = data[1];
 
-    $.get('/click.html', data).then(function (url) {
-      $.openLink(url);
+    return $.get('/click.html', data).then(function (url) {
+      return url.link();
     });
   },
 });

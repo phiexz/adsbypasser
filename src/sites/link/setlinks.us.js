@@ -6,8 +6,7 @@ $.register({
     // Redirect links d
     var k = $.searchScripts(/window\.location='([^']+)'/);
     if (k) {
-      $.openLink(k[1]);
-      return;
+      return k[1].link();
     }
 
     // One link container p
@@ -15,8 +14,7 @@ $.register({
 
     // If only one link, we redirect to it
     if (aLinks.size() === 1) {
-      $.openLink(aLinks.at(0).href);
-      return;
+      return aLinks.at(0).href.link;
     }
 
     // Captcha links p,t

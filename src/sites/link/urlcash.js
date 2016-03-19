@@ -6,14 +6,12 @@ $.register({
     'use strict';
 
     if ($.window && $.window.linkDestUrl) {
-      $.openLink($.window.linkDestUrl);
-      return;
+      return $.window.linkDestUrl.link();
     }
 
     var matches = document.body.innerHTML.match(/linkDestUrl = '(.+)'/);
     if (matches) {
-      $.openLink(matches[1]);
-      return;
+      return matches[1].link();
     }
   },
 });

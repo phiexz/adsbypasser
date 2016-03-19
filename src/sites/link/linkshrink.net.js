@@ -12,7 +12,7 @@ $.register({
     'use strict';
 
     var l = $('#skip .bt');
-    $.openLink(l.href);
+    return l.href.link();
   },
 });
 
@@ -24,7 +24,7 @@ $.register({
   start: function (m) {
     'use strict';
 
-    $.openLink(m.path[1]);
+    return m.path[1].link();
   },
 });
 

@@ -8,27 +8,24 @@ $.register({
 
     var f = $.$('iframe#dest');
     if (f) {
-      $.openLink(f.src);
-      return;
+      return f.src.link();
     }
 
     $.removeNodes('iframe');
 
     var o = $.$('#urlholder');
     if (o) {
-      $.openLink(o.value);
-      return;
+      return o.value.link();
     }
 
     o = $.$('#skipBtn');
     if (o) {
       o = o.querySelector('a');
-      $.openLink(o.href);
-      return;
+      return o.href.link();
     }
 
     o = document.title.replace(/(LNK.co|Linkbee)\s*:\s*/, '');
-    $.openLink(o);
+    return o.link();
   },
 });
 

@@ -10,7 +10,7 @@ $.register({
     if (!url.match(/^https?:\/\//)) {
       url = '//' + url;
     }
-    $.openLink(url);
+    return url.link();
   },
 });
 

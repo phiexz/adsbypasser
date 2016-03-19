@@ -8,7 +8,7 @@ $.register({
     $.removeNodes('iframe');
 
     var matches = $.searchScripts(/\$\("\.countdown"\)\.attr\("href","([^"]+)"\)/);
-    $.openLink(matches[1]);
+    return matches[1].link();
   },
 });
 

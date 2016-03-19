@@ -6,11 +6,11 @@ $.register({
   start: function () {
     'use strict';
 
-    $.post(document.location.href, {
+    return $.post(document.location.href, {
       image: 'Continue',
     }).then(function (text) {
       var m = text.match(/window\.location\.replace\('([^']+)'\)/);
-      $.openLink(m[1]);
+      return m[1].link();
     });
   },
 });

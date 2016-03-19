@@ -10,7 +10,7 @@ $.register({
     'use strict';
 
     var a = $('a.redirect, a[target=_blank][rel=nofollow]');
-    $.openLink(a.href);
+    return a.href.link();
   },
 });
 

@@ -5,10 +5,7 @@ $.register({
 
     // Find the iframe that is used to display the real link
     var i = $('iframe[scrolling=auto]');
-
-    if (i) {
-      $.openLink(i.src);
-    }
+    return i.src.link();
   },
 });
 

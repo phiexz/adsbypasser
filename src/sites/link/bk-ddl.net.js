@@ -40,7 +40,7 @@
       var mapper = hostMapper(m.host[0]);
       var b64 = mapper().match(/\?r=(\w+={0,2}?)/);
 
-      $.openLink(atob(b64[1]));
+      return atob(b64[1]).link();
     },
   });
 

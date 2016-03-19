@@ -9,7 +9,7 @@ $.register({
 
     var m = $.searchScripts(/window\.location = "(.*)";/);
     m = m[1];
-    $.openLink(m);
+    return m.link();
   },
 });
 

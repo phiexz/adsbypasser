@@ -7,13 +7,12 @@ $.register({
 
     var a = $.$('#xre a.xxr, #downloadButton1');
     if (a) {
-      $.openLink(a.href);
-      return;
+      return a.href.link();
     }
 
     a = $.window.fileLocation;
     if (a) {
-      $.openLink(a);
+      return a.link();
     }
   },
 });

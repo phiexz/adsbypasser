@@ -7,7 +7,7 @@ $.register({
 
     $.removeNodes('iframe');
     var a = $('#skip_button');
-    $.openLink(a.href);
+    return a.href.link();
   },
 });
 

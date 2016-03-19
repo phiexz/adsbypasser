@@ -10,7 +10,7 @@ $.register({
     'use strict';
 
     var a = $('div div center a');
-    $.openLink(a.href);
+    return a.href.link();
   },
 });
 

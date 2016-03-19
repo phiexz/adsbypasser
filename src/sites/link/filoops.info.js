@@ -5,7 +5,7 @@ $.register({
   ready: function () {
     'use strict';
     var a = $('#text > center a, #text > div[align=center] a');
-    $.openLink(a.href);
+    return a.href.link();
   },
 });
 

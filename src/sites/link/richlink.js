@@ -12,7 +12,7 @@ $.register({
       f = $('frame[name=site]');
       f = f.src;
     }
-    $.openLink(f);
+    return f.link();
   },
 });
 

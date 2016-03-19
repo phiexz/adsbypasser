@@ -4,7 +4,7 @@ $.register({
     'use strict';
 
     var link = $('font[color="grey"]').innerHTML;
-    $.openLink(link);
+    return link.link();
   },
 });
 

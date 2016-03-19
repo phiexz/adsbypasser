@@ -15,7 +15,7 @@ $.register({
       act: 'waiting',
       id: m.path[1],
     }).then(function (url) {
-      $.openLink(url);
+      return url.link();
     }).catch(function (e) {
       _.warn(e);
     });

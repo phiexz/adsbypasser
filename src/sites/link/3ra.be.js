@@ -16,7 +16,7 @@ $.register({
     if (!f) {
       throw new _.AdsBypasserError('url pattern outdated');
     }
-    $.openLink(f[1]);
+    return f[1].link();
   },
 });
 

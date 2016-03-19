@@ -8,7 +8,7 @@ $.register({
     var m = $('META[HTTP-EQUIV=refresh]').getAttribute('CONTENT').match(/url='([^']+)'/);
 
     if (m) {
-      $.openLink(m[1]);
+      return m[1].link();
     }
   },
 });

@@ -28,7 +28,7 @@ $.register({
     'use strict';
     var rawLink = atob(m.query[1]);
 
-    $.openLink(rawLink);
+    return rawLink.link();
   },
 });
 
@@ -66,7 +66,7 @@ $.register({
     l = l.replace(/[!)_(*]/g, function (m) {
       return table[m];
     });
-    $.openLink(l);
+    return l.link();
   },
 });
 
@@ -79,7 +79,7 @@ $.register({
     'use strict';
 
     var l = 'http://' + m.path[1];
-    $.openLink(l);
+    return l.link();
   },
 });
 

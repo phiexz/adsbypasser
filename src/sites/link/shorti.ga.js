@@ -10,7 +10,7 @@ $.register({
     'use strict';
 
     var f = $.$$('frame');
-    
+
     // Find the right frame
     var fl = f.find(function(value, key, self) {
       if (value.getAttribute('class')) {
@@ -21,7 +21,7 @@ $.register({
       return 'Target frame found';
     });
 
-    $.openLink(fl.value.src);
+    return fl.value.src.link();
   },
 });
 

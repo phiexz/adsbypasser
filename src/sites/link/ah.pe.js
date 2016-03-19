@@ -8,8 +8,8 @@ $.register({
     $.removeNodes('iframe');
 
     var url = $.window.url;
-    $.get(url).then(function (url) {
-      $.openLink(url);
+    return $.get(url).then(function (url) {
+      return url.link();
     });
   },
 });

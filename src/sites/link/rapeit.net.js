@@ -7,7 +7,7 @@ $.register({
     'use strict';
 
     var a = $('a#download_link');
-    $.openLink(a.href);
+    return a.href.link();
   },
 });
 

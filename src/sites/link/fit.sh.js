@@ -15,9 +15,9 @@ $.register({
 
     var interLink = '/go/' + m + '?fa=15466&a=' + window.location.hash.substr(1);
 
-    setTimeout(function () {
-      $.openLink(interLink);
-    }, 6000);
+    return _.wait(6000).then(function () {
+      return interLink.link();
+    });
   },
 });
 

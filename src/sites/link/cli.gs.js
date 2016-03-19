@@ -6,7 +6,7 @@ $.register({
     'use strict';
 
     var a = $('a.RedirectLink');
-    $.openLink(a.href);
+    return a.href.link();
   },
 });
 

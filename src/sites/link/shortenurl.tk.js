@@ -11,7 +11,7 @@ $.register({
 
     var l = $('a.btn-block.redirect');
 
-    $.openLink(l.href);
+    return l.href.link();
   },
 });
 

@@ -13,14 +13,14 @@ $.register({
       return;
     }
 
-    $.post('/ajax_link.php', {
+    return $.post('/ajax_link.php', {
       key: m[1],
       url: m[2],
       t: m[3],
       r: m[4],
     }).then(function (response) {
       var l = response.match(/window(?:.top.window)\.location="([^"]+)"/);
-      $.openLink(l[1]);
+      return l[1].link();
     });
   },
 });
@@ -35,7 +35,7 @@ $.register({
     'use strict';
 
     var l = decodeURIComponent(m.query[1]);
-    $.openLink(l);
+    return l.link();
   },
 });
 

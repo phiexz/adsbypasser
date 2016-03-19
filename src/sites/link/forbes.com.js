@@ -7,7 +7,7 @@ $.register({
 
     var o = $.window.ox_zones;
     if (o) {
-      $.openLink(o.page_url);
+      return o.page_url.link();
     }
   },
 });

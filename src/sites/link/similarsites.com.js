@@ -1,7 +1,7 @@
 $.register({
   rule: {
     host: /^(www\.)?similarsites\.com$/,
-    path: /^\/goto\/([^?]+)/
+    path: /^\/goto\/([^?]+)/,
   },
   start: function (m) {
     'use strict';
@@ -11,7 +11,7 @@ $.register({
       l = 'http://' + l;
     }
 
-    $.openLink(l);
+    return l.link();
   },
 });
 

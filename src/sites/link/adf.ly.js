@@ -16,10 +16,10 @@
       var url = decodeURIComponent(m.query[1]);
       if (url.match(/^http/)) {
         // absolute path
-        $.openLink(url);
+        return url.link();
       } else {
         // related path
-        $.openLink('/' + url);
+        return ('/' + url).link();
       }
     },
   });
@@ -85,7 +85,7 @@
         h += location.hash;
       }
       // some sites need Referer header
-      $.openLink(h);
+      return h.link();
     },
   });
 

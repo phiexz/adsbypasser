@@ -16,8 +16,7 @@ $.register({
     // pattern 1
     var m = $.searchScripts(/top\.location\.href="([^"]+)"/);
     if (m) {
-      $.openLink(m[1]);
-      return;
+      return m[1].link();
     }
 
     // pattern 2
@@ -28,15 +27,16 @@ $.register({
     m = eval('(' + m[0] + ')');
     var url = window.location.pathname + '/skip_timer';
 
-    var i = setInterval(function () {
-      $.post(url, m).then(function (text) {
+    return _.tryThenable(1000, function () {
+      return $.post(url, m).then(function (text) {
         var jj = _.parseJSON(text);
         if (!jj.errors && jj.messages) {
-          clearInterval(i);
-          $.openLink(jj.messages.url);
+          return jj.messages.url;
         }
       });
-    }, 1000);
+    }).then(function (url) {
+      return url.link();
+    });
   },
 });
 

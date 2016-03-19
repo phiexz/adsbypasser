@@ -9,14 +9,13 @@ $.register({
     $.removeNodes('frame[name=bottom]');
 
     var f = $('frame[name=top]');
-    var i = setInterval(function () {
+    return _.try(1000, function () {
       var a = $.$('div a', f.contentDocument);
       if (!a) {
-        return;
+        return _.none;
       }
-      clearInterval(i);
-      $.openLink(a.href)
-    }, 1000);
+      return a.href.link();
+    });
   },
 });
 

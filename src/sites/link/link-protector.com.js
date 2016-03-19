@@ -7,7 +7,7 @@ $.register({
 
     var f = $('form[style="font-weight:normal;font-size:12;font-family:Verdana;"]');
 
-    $.openLink(f.action);
+    return f.action.link();
   },
 });
 

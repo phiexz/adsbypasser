@@ -8,7 +8,7 @@ $.register({
     'use strict';
 
     var url = decodeURIComponent(m.query[1]);
-    $.openLink(url);
+    return url.link();
   },
 });
 

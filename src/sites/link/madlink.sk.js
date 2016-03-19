@@ -11,10 +11,10 @@ $.register({
     'use strict';
 
     $.removeNodes('iframe');
-    $.post('/ajax/check_redirect.php', {
+    return $.post('/ajax/check_redirect.php', {
       link: m[1],
     }).then(function (text) {
-      $.openLink(text);
+      return text.link();
     });
   },
 });

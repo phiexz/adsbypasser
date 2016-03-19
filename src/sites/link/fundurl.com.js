@@ -7,7 +7,7 @@
       query: /i=([^&]+)/,
     },
     start: function (m) {
-      $.openLink(m.query[1]);
+      return m.query[1].link();
     },
   });
 
@@ -18,7 +18,7 @@
     },
     ready: function () {
       var f = $('iframe[name=fpage3]');
-      $.openLink(f.src);
+      return f.src.link();
     },
   });
 

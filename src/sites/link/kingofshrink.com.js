@@ -7,7 +7,7 @@ $.register({
 
     var l = $('#textresult > a');
 
-    $.openLink(l.href);
+    return l.href.link();
   },
 });
 

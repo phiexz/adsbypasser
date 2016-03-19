@@ -11,7 +11,7 @@
       path: /^.+(https?:\/\/.+)$/,
     },
     start: function (m) {
-      $.openLink(m.path[1] + document.location.search + document.location.hash);
+      return (m.path[1] + document.location.search + document.location.hash).link();
     },
   });
 
@@ -48,19 +48,21 @@
     var make_url = matches[1];
     var make_opts = eval('(' + matches[2] + ')');
 
-    var i = setInterval(function () {
-      $.post(make_url, make_opts).then(function (text) {
+    return _.tryThenable(1000, function () {
+      return $.post(make_url, make_opts).then(function (text) {
         if (dirtyFix) {
           // dirty fix for tr5.in
           text = text.match(/\{.+\}/)[0];
         }
         var jj = _.parseJSON(text);
         if (jj.message) {
-          clearInterval(i);
-          $.openLink(jj.message.url);
+          return jj.message.url;
         }
+        return _.none;
       });
-    }, 1000);
+    }).then(function (url) {
+      return url.link();
+    });
   }
 
   function knockServer2 (script) {
@@ -71,7 +73,7 @@
       if (typeof c !== 'function') {
         return;
       }
-      setTimeout(function () {
+      return _.wait(1000).then(function () {
         var data = {
           error: false,
           message: {
@@ -79,7 +81,7 @@
           },
         };
         c(JSON.stringify(data));
-      }, 1000);
+      });
     };
 
     var matches = script.match(/\$.post\('([^']*)'[^{]+(\{opt:'make_log'[^}]+\}\}),/i);
@@ -89,42 +91,41 @@
     var make_opts = eval('(' + matches[2] + ')');
 
     function makeLog () {
-        make_opts.opt = 'make_log';
-        post(make_url, make_opts, function (text) {
-          var data = _.parseJSON(text);
-          _.info('make_log', data);
-          if (!data.message) {
-            checksLog();
-            return;
-          }
+      make_opts.opt = 'make_log';
+      // FIXME very likely to break
+      return post(make_url, make_opts).then(function (text) {
+        var data = _.parseJSON(text);
+        _.info('make_log', data);
+        if (!data.message) {
+          return checksLog();
+        }
 
-          $.openLink(data.message.url);
-        });
+        return data.message.url.link();
+      });
     }
 
     function checkLog () {
       make_opts.opt = 'check_log';
-      post(make_url, make_opts, function (text) {
+      return post(make_url, make_opts).then(function (text) {
         var data = _.parseJSON(text);
         _.info('check_log', data);
         if (!data.message) {
-          checkLog();
-          return;
+          return checkLog();
         }
 
-        makeLog();
+        return makeLog();
       });
     }
 
     function checksLog () {
       make_opts.opt = 'checks_log';
-      post(make_url, make_opts, function () {
+      return post(make_url, make_opts).then(function () {
         _.info('checks_log');
-        checkLog();
+        return checkLog();
       });
     }
 
-    checksLog();
+    return checksLog();
   }
 
   // bc.vc
@@ -138,15 +139,15 @@
 
       var result = searchScript(false);
       if (!result.direct) {
-        knockServer2(result.script);
-      } else {
-        result = result.script.match(/top\.location\.href = '([^']+)'/);
-        if (!result) {
-          throw new _.AdsBypasserError('script changed');
-        }
-        result = result[1];
-        $.openLink(result);
+        return knockServer2(result.script);
       }
+
+      result = result.script.match(/top\.location\.href = '([^']+)'/);
+      if (!result) {
+        throw new _.AdsBypasserError('script changed');
+      }
+      result = result[1];
+      return result.link();
     },
   });
 
@@ -156,15 +157,15 @@
 
     var result = searchScript(true);
     if (!result.direct) {
-      knockServer(result.script,dirtyFix);
-    } else {
-      result = result.script.match(/top\.location\.href='([^']+)'/);
-      if (!result) {
-        throw new _.AdsBypasserError('script changed');
-      }
-      result = result[1];
-      $.openLink(result);
+      return knockServer(result.script,dirtyFix);
     }
+
+    result = result.script.match(/top\.location\.href='([^']+)'/);
+    if (!result) {
+      throw new _.AdsBypasserError('script changed');
+    }
+    result = result[1];
+    return result.link();
   }
 
   // adcrun.ch
@@ -181,13 +182,12 @@
       var l = $.searchScripts(rSurveyLink);
       // Redirect to the target link if we found it
       if (l) {
-        $.openLink(l[1]);
-        return;
+        return l[1].link();
       }
 
       // Otherwise it's most likely a simple bc.vc-like link
       // Malformed JSON
-      run(true);
+      return run(true);
     },
   });
 
@@ -229,9 +229,9 @@
       // the iframe may be an ad link
       // so also check the close button
       if (a && f) {
-        $.openLink(f.src);
+        return f.src.link();
       } else {
-        run();
+        return run();
       }
     },
   });
@@ -248,7 +248,9 @@
       // Find the form
       var m = s.script.match(/(<form name="form1"method="post".*(?!<\\form>)<\/form>)/);
 
-      if (!m) {return;}
+      if (!m) {
+        return;
+      }
 
       m = m[1];
 
@@ -277,7 +279,7 @@
     },
     ready: function () {
       // Malformed JSON
-      run(true);
+      return run(true);
     },
   });
 

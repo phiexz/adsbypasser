@@ -10,7 +10,7 @@ $.register({
     'use strict';
 
     var m = $.searchScripts(/window\.location="([^"]*)";/);
-    $.openLink(m[1]);
+    return m[1].link();
   },
 });
 

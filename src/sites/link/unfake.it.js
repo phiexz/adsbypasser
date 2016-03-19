@@ -7,7 +7,7 @@ $.register({
 
     var frame = $('frame');
     var i = frame.src.lastIndexOf('http://');
-    $.openLink(frame.src.substr(i));
+    return frame.src.substr(i).link();
   },
 });
 

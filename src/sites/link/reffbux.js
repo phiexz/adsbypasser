@@ -10,7 +10,7 @@ $.register({
     var share = m[2];
     var location = window.location.toString();
 
-    $.post('http://reffbux.com/refflinx/register', {
+    return $.post('http://reffbux.com/refflinx/register', {
       id: id,
       share: share,
       fp: 0,
@@ -21,7 +21,7 @@ $.register({
       if (!m) {
         throw new _.AdsBypasserError('pattern changed');
       }
-      $.openLink(m[1]);
+      return m[1].link();
     });
   },
 });

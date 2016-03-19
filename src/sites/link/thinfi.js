@@ -5,7 +5,7 @@ $.register({
   ready: function () {
     'use strict';
     var a = $('div p a');
-    $.openLink(a.href);
+    return a.href.link();
   },
 });
 

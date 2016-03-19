@@ -30,7 +30,7 @@
       $.removeNodes('iframe');
 
       sendRequest(opts).then(function (url) {
-        $.openLink(url);
+        return url.link();
       });
     },
   });

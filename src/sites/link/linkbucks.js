@@ -155,7 +155,7 @@
           url = Encode(ConvertFromHex(url));
         }
 
-        $.openLink(url);
+        return url.link();
       }
     });
 
@@ -175,13 +175,12 @@
         if (window.location.pathname.indexOf('verify') >= 0) {
           // NOTE dirty fix
           var path = window.location.pathname.replace('/verify', '');
-          $.openLink(path);
-          return;
+          return path.link();
         }
 
         var token = findToken(document);
-        sendRequest(token).then(function (url) {
-          $.openLink(url);
+        return sendRequest(token).then(function (url) {
+          return url.link();
         });
       },
     });
@@ -194,7 +193,7 @@
       },
       start: function (m) {
         $.setCookie('_lbGatePassed', 'true');
-        $.openLink(window.location.pathname + m.query[1]);
+        return (window.location.pathname + m.query[1]).link();
       },
     });
 

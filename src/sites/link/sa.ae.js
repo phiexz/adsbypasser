@@ -7,7 +7,7 @@ $.register({
     'use strict';
 
     var m = $.searchScripts(/var real_link = '([^']+)';/);
-    $.openLink(m[1]);
+    return m[1].link();
   },
 });
 

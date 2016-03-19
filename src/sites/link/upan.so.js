@@ -7,7 +7,7 @@ $.register({
     'use strict';
 
     var a = $('table.td_line a[onclick="down_process_s();"]');
-    $.openLink(a.href);
+    return a.href.link();
   },
 });
 

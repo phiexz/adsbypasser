@@ -6,10 +6,10 @@ $.register({
     'use strict';
 
     var f = $('.framedRedirectTopFrame');
-    $.get(f.src).then(function (html) {
+    return $.get(f.src).then(function (html) {
       html = $.toDOM(html);
       var a = $('#continueButton > a', html);
-      $.openLink(a.href);
+      return a.href.link();
     }).catch(function (e) {
       _.warn(e);
     });

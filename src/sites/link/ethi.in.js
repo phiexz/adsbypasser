@@ -10,7 +10,7 @@ $.register({
     'use strict';
 
     var a = $('#wrapper > [class^="tombo"] > a[target="_blank"]');
-    $.openLink(a.href);
+    return a.href.link();
   },
 });
 

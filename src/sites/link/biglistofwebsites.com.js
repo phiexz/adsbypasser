@@ -6,7 +6,7 @@ $.register({
   start: function (m) {
     'use strict';
 
-    $.openLink('http://' + m.path[1]);
+    return ('http://' + m.path[1]).link();
   },
 });
 

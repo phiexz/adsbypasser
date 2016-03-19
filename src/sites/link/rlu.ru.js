@@ -6,7 +6,7 @@ $.register({
     'use strict';
 
     var a = $('#content > .long_url > a');
-    $.openLink(a.href);
+    return a.href.link();
   },
 });
 

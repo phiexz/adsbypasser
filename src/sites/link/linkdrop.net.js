@@ -14,7 +14,7 @@ $.register({
     }
 
     var l = matches[1];
-    $.openLink(l);
+    return l.link();
   },
 });
 

@@ -13,7 +13,7 @@
       'use strict';
 
       var l = m.path[1] + m.query[1] + m.hash[1];
-      $.openLink(l);
+      return l.link();
     },
   });
 
@@ -27,9 +27,9 @@
       $.removeNodes('iframe');
 
       var jQuery = $.window.$;
-      setTimeout(function () {
+      return _.wait(1000).then(function () {
         jQuery("#captcha-dialog").dialog("open");
-      }, 1000);
+      });
     },
   });
 

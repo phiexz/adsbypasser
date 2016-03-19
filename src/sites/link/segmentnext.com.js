@@ -10,7 +10,7 @@ $.register({
   start: function (m) {
     'use strict';
 
-    $.openLink(decodeURIComponent(m.query[1]));
+    return decodeURIComponent(m.query[1]).link();
   },
 });
 

@@ -10,7 +10,7 @@ $.register({
       throw new _.AdsBypasserError('site changed');
     }
 
-    $.openLink(m[1]);
+    return m[1].link();
   },
 });
 

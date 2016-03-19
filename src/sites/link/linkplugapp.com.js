@@ -6,7 +6,7 @@ $.register({
     'use strict'
 
     var a = $('#mc_embed_signup_scroll a')
-    $.openLink(a.href)
+    return a.href.link();
   },
 })
 

@@ -8,7 +8,7 @@ $.register({
 
     var url = atob(m.path[1]);
     url = url.match(/\{sht-io\}(.+)$/);
-    $.openLink(url[1]);
+    return url[1].link();
   },
 });
 

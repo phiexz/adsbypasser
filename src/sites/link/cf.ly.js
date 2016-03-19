@@ -7,7 +7,7 @@ $.register({
     'use strict';
 
     $.removeNodes('iframe');
-    $.openLink('/skip' + m.path[0]);
+    return ('/skip' + m.path[0]).link();
   },
 });
 

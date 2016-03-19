@@ -5,11 +5,11 @@ $.register({
   ready: function (m) {
     'use strict';
 
-    var matches = $.searchScripts(/window\.location\.href = "([^"]+)"/);
-    $.openLink(matches[1]);
-
     // Avoid that the page redirects when it's already loading the target page
     $.removeAllTimer();
+
+    var matches = $.searchScripts(/window\.location\.href = "([^"]+)"/);
+    return matches[1].link();
   },
 });
 

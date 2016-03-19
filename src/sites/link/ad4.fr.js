@@ -12,7 +12,7 @@ $.register({
       _.warn('changed');
       return;
     }
-    $.openLink(s[1]);
+    return s[1].link();
   },
 });
 

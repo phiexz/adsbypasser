@@ -2,11 +2,11 @@ $.register({
   rule: {
     host: /^(www\.)?typ\.me$/,
   },
-  ready: function (m) {
+  ready: function () {
     'use strict';
 
     var a = $('#skipAdBtn');
-    $.openLink(a.href);
+    return a.href.link();
   },
 });
 

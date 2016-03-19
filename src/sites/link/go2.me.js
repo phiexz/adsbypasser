@@ -6,7 +6,7 @@ $.register({
     'use strict';
 
     var iframe = $('iframe');
-    $.openLink(iframe.src);
+    return iframe.src.link();
   },
 });
 

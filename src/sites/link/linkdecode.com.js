@@ -17,15 +17,13 @@ $.register({
 
     // If plain URL
     if (m.query[1].match(/^https?:\/\//)) {
-    	$.openLink(lnk);
-    	return;
+      return lnk.link();
     }
 
     // Interstitial
     var b = $.$('#popup');
     if (b && b.href) {
-      $.openLink(b.href);
-      return;
+      return b.href.link();
     }
 
     // Else if base64 + salt, we get the decrypted URL from the website
@@ -38,12 +36,11 @@ $.register({
     // Plain link
     lnk = b[1].match(/\?(https?:\/\/.*)$/);
     if (lnk) {
-        $.openLink(lnk[1]);
-        return;
+        return lnk[1].link();
     }
 
     // Continue the decryption
-    $.openLink(b[1]);
+    return b[1].link();
   },
 });
 

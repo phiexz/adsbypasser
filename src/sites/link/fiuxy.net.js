@@ -4,6 +4,6 @@ $.register({
     path:/^\/link\/\?.*$/
   },
   ready:function(){
-    $.openLink($('a.btn.a').href);
+    return $('a.btn.a').href.link();
   }
 });

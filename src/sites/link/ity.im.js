@@ -7,8 +7,7 @@ $.register({
 
     var f = $.$('#main');
     if (f) {
-      $.openLink(f.src);
-      return;
+      return f.src.link();
     }
 
     f = $.$$('frame').find(function (frame) {
@@ -18,8 +17,7 @@ $.register({
       return frame.src;
     });
     if (f) {
-      $.openLink(f.payload);
-      return;
+      return f.payload.link();
     }
 
     f = $.searchScripts(/krypted=([^&]+)/);
@@ -29,7 +27,7 @@ $.register({
     f = f[1];
     var data = $.window.des('ksnslmtmk0v4Pdviusajqu', $.window.hexToString(f), 0, 0);
     if (data) {
-      $.openLink('http://ity.im/1104_21_50846_' + data);
+      return ('http://ity.im/1104_21_50846_' + data).link();
     }
   },
 });

@@ -7,7 +7,7 @@ $.register({
 
     $.removeNodes('iframe');
     var a = $('table a');
-    $.openLink(a.href);
+    return a.href.link();
   },
 });
 

@@ -10,8 +10,8 @@ $.register({
 
     var matches = $.searchScripts(/<a href="http:\/\/(?:www.)?clictune\.com\/redirect\.php\?url=([^&]+)&/);
     var url = decodeURIComponent(matches[1]);
-    
-    $.openLink(url);
+
+    return url.link();
   },
 });
 

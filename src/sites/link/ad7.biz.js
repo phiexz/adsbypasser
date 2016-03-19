@@ -14,7 +14,7 @@
       if (!redirectLink.match(/^https?:\/\//)) {
         redirectLink = "http://" + redirectLink;
       }
-      $.openLink(redirectLink);
+      return redirectLink.link();
     },
   });
 
@@ -29,7 +29,7 @@
       var script = $.searchScripts('var r_url');
       var url = script.match(/&url=([^&]+)/);
       url = url[1];
-      $.openLink(url);
+      return url.link();
     },
   });
 

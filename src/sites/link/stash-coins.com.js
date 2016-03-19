@@ -8,7 +8,7 @@ $.register({
     var url = window.location.toString();
     var i = url.lastIndexOf('http');
     url = url.substr(i);
-    $.openLink(url);
+    return url.link();
   },
 });
 
