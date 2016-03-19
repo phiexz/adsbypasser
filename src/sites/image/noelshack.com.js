@@ -4,7 +4,7 @@ $.register({
   },
   ready: function () {
     var i = $('#elt_to_aff');
-    $.openImage(i.src);
+    return i.src.image();
   },
 });
 

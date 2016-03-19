@@ -8,7 +8,7 @@ $.register({
     'use strict';
 
     var url = m.query[1];
-    $.openImage('/' + url);
+    return ('/' + url).image();
   },
 });
 

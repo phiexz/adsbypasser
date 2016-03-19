@@ -7,7 +7,7 @@ $.register({
 
     $.removeNodes('iframe, .adultpage, #FFN_Banner_Holder');
     var i = $('.image-show img');
-    $.openImage(i.src);
+    return i.src.image();
   },
 });
 

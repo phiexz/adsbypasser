@@ -6,7 +6,7 @@ $.register({
     'use strict';
 
     var img = $('#wrap3 img');
-    $.openImage(img.src);
+    return img.src.image();
   },
 });
 

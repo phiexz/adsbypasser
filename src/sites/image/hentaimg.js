@@ -3,7 +3,7 @@ $.register({
   ready: function () {
     'use strict';
 
-    $.openLink('index-1.php' + window.location.search);
+    return ('index-1.php' + window.location.search).link();
   },
 });
 
@@ -13,7 +13,7 @@ $.register({
     'use strict';
 
     var i = $('#content img');
-    $.openImage(i.src);
+    return i.src.image();
   },
 });
 

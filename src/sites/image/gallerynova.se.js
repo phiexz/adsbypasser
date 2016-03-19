@@ -7,7 +7,7 @@ $.register({
     'use strict';
 
     var i = $('#myUniqueImg').parentNode;
-    $.openImage(i.href);
+    return i.href.image();
   },
 });
 
@@ -32,7 +32,7 @@ $.register({
       var decodedHTML = document.createTextNode(json.content).data;
 
       var imgURL = decodedHTML.match(/<a href="([^"]+)" target="_blank">/)[1];
-      $.openImage(imgURL);
+      return imgURL.image();
     });
   },
 });

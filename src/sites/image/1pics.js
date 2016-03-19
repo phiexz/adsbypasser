@@ -6,7 +6,7 @@ $.register({
     'use strict';
 
     var img = $('img[alt$="1Pics.Ru"]');
-    $.openImage(img.src);
+    return img.src.image();
   },
 });
 

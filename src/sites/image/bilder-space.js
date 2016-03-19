@@ -6,7 +6,7 @@ $.register({
     $.removeNodes('iframe');
 
     var img = $('img.picture');
-    $.openImage(img.src);
+    return img.src.image();
   },
 });
 

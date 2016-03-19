@@ -7,7 +7,7 @@ $.register({
     'use strict';
 
     var img = $('#picContainer #image');
-    $.openImage(img.src, {
+    return img.src.image({
       // prevent loopback if image not found
       referer: true,
     });

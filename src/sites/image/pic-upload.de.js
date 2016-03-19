@@ -5,7 +5,7 @@ $.register({
 
     $.removeNodes('.advert');
     var i = $('img.preview_picture_2b, img.original_picture_2b');
-    $.openImage(i.src);
+    return i.src.image();
   },
 });
 

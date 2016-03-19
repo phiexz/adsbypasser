@@ -9,7 +9,7 @@ $.register({
     'use strict';
 
     var img = $('#picture');
-    $.openImage(img.src);
+    return img.src.image();
   },
 });
 

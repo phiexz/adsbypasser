@@ -16,7 +16,7 @@
       path: /^\/xxx\/(.+)/,
     },
     start: function (m) {
-      $.openImage('/xxx/images/' + m.path[1]);
+      return ('/xxx/images/' + m.path[1]).image();
     },
   });
 
@@ -26,7 +26,7 @@
       query: /^\?v=(.+)/,
     },
     start: function (m) {
-      $.openImage('/xxx/images/' + m.query[1]);
+      return ('/xxx/images/' + m.query[1]).image();
     },
   });
 

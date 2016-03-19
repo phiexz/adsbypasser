@@ -7,11 +7,11 @@ $.register({
 
     var a = $.$('body > center > a > img');
     if(a){
-      $.openLink(a.parentNode.href);
+      return a.parentNode.href.link();
     }
 
     var i = $('body > center > img');
-    $.openImage(i.src);
+    return i.src.image();
   },
 });
 

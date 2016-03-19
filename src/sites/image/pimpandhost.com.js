@@ -14,7 +14,7 @@ $.register({
     el.innerHTML = a.value;
     var img = $('img', el);
 
-    $.openImage(img.src);
+    return img.src.image();
   },
 });
 

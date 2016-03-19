@@ -19,7 +19,7 @@ $.register({
     'use strict';
 
     var o = $('#iimg');
-    $.openImage(o.src);
+    return o.src.image();
   },
 });
 

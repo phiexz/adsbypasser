@@ -7,7 +7,7 @@ $.register({
   start: function (m) {
     'use strict';
 
-    $.openImage('/xxx/images/' + m.query[1]);
+    return ('/xxx/images/' + m.query[1]).image();
   },
 });
 
@@ -19,7 +19,7 @@ $.register({
   start: function (m) {
     'use strict';
 
-    $.openImage('/images/' + m.query[1]);
+    return ('/images/' + m.query[1]).image();
   },
 });
 

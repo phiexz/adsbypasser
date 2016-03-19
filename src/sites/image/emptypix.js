@@ -20,7 +20,7 @@ $.register({
     'use strict';
 
     var img = $('#full_image');
-    $.openImage(img.src);
+    return img.src.image();
   },
 });
 

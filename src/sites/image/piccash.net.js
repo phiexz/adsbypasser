@@ -5,7 +5,7 @@ $.register({
   ready: function () {
   var i = $('.container > img');
   var m =i.onclick.toString().match(/mshow\('([^']+)'\);/);
-  $.openImage(m[1]);
+  return m[1].image();
   },
 });
 

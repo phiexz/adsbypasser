@@ -4,7 +4,7 @@ $.register({
     'use strict';
 
     var i = $('#ImagenVisualizada');
-    $.openImage(i.src);
+    return i.src.image();
   },
 });
 

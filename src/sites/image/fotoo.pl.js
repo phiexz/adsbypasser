@@ -3,7 +3,7 @@
 
   function run () {
     var i = $('#img_obj');
-    $.openImage(i.src);
+    return i.src.image();
   }
 
   $.register({

@@ -27,7 +27,7 @@
   var pathRule = /^\/([0-9a-z]+)(\.|\/|$)/;
 
   function go (id, pre, next) {
-    $.openLink('', {
+    return ''.link({
       post: {
         op: 'view',
         id: id,
@@ -62,15 +62,13 @@
     if (i) {
       // first stage
       var next = getNext(i);
-      go(id, $('input[name="pre"]').value, next);
-      return;
+      return go(id, $('input[name="pre"]').value, next);
     }
 
     i = $.$('img.pic');
     if (i) {
       // second stage
-      $.openImage(i.src);
-      return;
+      return i.src.image();
     }
 
     // other page
@@ -111,8 +109,7 @@
       var i = $.$('img.pic');
       if (i) {
         // second stage
-        $.openImage(i.src);
-        return;
+        return i.src.image();
       }
 
       var d = $('div[id^="imageviewi"]');
@@ -142,8 +139,7 @@
       var i = $.$('img.pic');
       if (i) {
         // second stage
-        $.openImage(i.src, {replace: true});
-        return;
+        return i.src.image({replace: true});
       }
 
       var d = $('div[id^="imageviewi"] input[type="submit"][style=""]');

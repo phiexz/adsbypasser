@@ -13,7 +13,7 @@ $.register({
       return;
     }
     // NOTE actually this site points to another image host
-    $.openImage(url[1]);
+    return url[1].image();
   },
 });
 

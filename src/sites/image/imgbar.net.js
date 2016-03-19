@@ -9,7 +9,7 @@ $.register({
     'use strict';
 
     var i = $('center img');
-    $.openImage(i.src);
+    return i.src.image();
   },
 });
 
@@ -22,7 +22,7 @@ $.register({
     'use strict';
 
     var i = $('div.panel.top form input[name=sid]');
-    $.openLink('/img_show.php?view_id=' + i.value);
+    return ('/img_show.php?view_id=' + i.value).link();
   },
 });
 

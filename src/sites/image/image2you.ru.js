@@ -15,7 +15,7 @@ $.register({
       });
       return;
     }
-    $.openImage(i.src);
+    return i.src.image();
   },
 });
 

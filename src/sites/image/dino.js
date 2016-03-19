@@ -8,7 +8,7 @@ $.register({
     'use strict';
 
     var o = $('#cursor_lupa');
-    $.openImage(o.src);
+    return o.src.image();
   },
 });
 

@@ -7,7 +7,7 @@ $.register({
     'use strict';
 
     var a = $('article div.span7 a[target="_blank"]');
-    $.openImage(a.href);
+    return a.href.image();
   },
 });
 

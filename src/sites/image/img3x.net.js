@@ -12,7 +12,7 @@ $.register({
     }
 
     f = $('#show_image');
-    $.openImage(f.src);
+    return f.src.image();
   },
 });
 

@@ -4,7 +4,7 @@ $.register({
     'use strict';
 
     var m = $('meta[property="og:image"]');
-    $.openImage(m.content);
+    return m.content.image();
   },
 });
 

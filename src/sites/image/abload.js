@@ -3,7 +3,7 @@
 
   function run () {
     var i = $('#image');
-    $.openImage(i.src);
+    return i.src.image();
   }
 
   $.register({
@@ -12,7 +12,7 @@
       path: /^\/verify\/(.+)$/,
     },
     start: function (m) {
-      $.openLink('/image/' + m.path[1], {
+      return ('/image/' + m.path[1]).link({
         referer: false,
       });
     },

@@ -6,7 +6,7 @@ $.register({
     'use strict';
 
     var i = $('.continue > form > input[name=link]');
-    $.openImage(i.value);
+    return i.value.image();
   },
 });
 

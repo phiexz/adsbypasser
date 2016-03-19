@@ -4,7 +4,7 @@ $.register({
     'use strict';
 
     var i = $('#img_viewer');
-    $.openImage(i.src);
+    return i.src.image();
   },
 });
 

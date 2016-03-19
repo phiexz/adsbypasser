@@ -7,18 +7,17 @@
     var node = $.$('#continuetoimage > form input');
     if (node) {
       // first pass
-      _.wait(500).then(function () {
+      return _.wait(500).then(function () {
         node.removeAttribute('disabled');
         return _.wait(500);
       }).then(function () {
         node.click();
       });
-      return;
     }
 
     // second pass
     var i = $('img[class^=centred]');
-    $.openImage(i.src);
+    return i.src.image();
   }
 
   $.register({
@@ -137,7 +136,7 @@
 
       // second pass
       var i = $('img[class^=centred]');
-      $.openImage(i.src);
+      return i.src.image();
     },
   });
 
@@ -160,7 +159,7 @@
     start: function () {
       helper().then(function (page) {
         var i = $('img[class^=centred]', page);
-        $.openImage(i.src);
+        return i.src.image();
       });
     },
   });
@@ -177,7 +176,7 @@
         bbcode = bbcode[1];
         bbcode = bbcode.replace('small', 'big');
 
-        $.openImage(bbcode);
+        return bbcode.image();
       });
     },
   });
@@ -189,7 +188,7 @@
     },
     ready: function () {
       var url = $.window.linkid;
-      $.openImage(url);
+      return url.image();
     },
   });
 

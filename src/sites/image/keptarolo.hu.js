@@ -6,7 +6,7 @@ $.register({
   start: function (m) {
     'use strict';
 
-    $.openImage('http://www.keptarolo.hu/kep' + m.path[1]);
+    return ('http://www.keptarolo.hu/kep' + m.path[1]).image();
   },
 });
 

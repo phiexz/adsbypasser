@@ -2,7 +2,7 @@
   'use strict';
 
   function helper (m) {
-    $.openImage('/images/' + m.query[1]);
+    return ('/images/' + m.query[1]).image();
   }
 
   // mihalism v1
@@ -33,7 +33,7 @@
       query: /file=([^&]+)/,
     },
     start: function (m) {
-      $.openImage('/files/' + m.query[1]);
+      return ('/files/' + m.query[1]).image();
     },
   });
 
@@ -57,7 +57,7 @@
     ],
     ready: function () {
       var i = $('#main_img');
-      $.openImage(i.src);
+      return i.src.image();
     },
   });
 
@@ -68,7 +68,7 @@
       query: /file=([^&]+)/,
     },
     start: function (m) {
-      $.openImage('files/' + m.query[1]);
+      return ('files/' + m.query[1]).image();
     },
   });
 

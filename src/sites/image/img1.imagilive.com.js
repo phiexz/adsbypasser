@@ -5,12 +5,11 @@ $.register({
 
     var a = $.$('#page a.button');
     if (a) {
-      $.redirect(a.href);
-      return;
+      return a.href.link();
     }
 
     var i = $('#page > img:not([id])');
-    $.openImage(i.src);
+    return i.src.image();
   },
 });
 

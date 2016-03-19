@@ -3,7 +3,7 @@
 
   function run () {
     var o = $('#download_box img[id]');
-    $.openImage(o.src);
+    return o.src.image();
   }
 
   $.register({

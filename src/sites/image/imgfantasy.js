@@ -17,7 +17,7 @@ $.register({
       return;
     }
     var i = $('#container-home img[onclick]');
-    $.openImage(i.src);
+    return i.src.image();
   },
 });
 

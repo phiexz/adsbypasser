@@ -16,7 +16,7 @@ $.register({
     $.removeNodes('iframe');
 
     var i = $('center img:not([id])');
-    $.openImage(i.src);
+    return i.src.image();
   },
 });
 
@@ -33,7 +33,7 @@ $.register({
     i = i.onclick.toString();
     i = i.match(/mshow\('(.+)'\)/);
     i = i[1];
-    $.openImage(i);
+    return i.image();
   },
 });
 

@@ -4,7 +4,7 @@ $.register({
     'use strict';
 
     var i = $('table img');
-    $.openImage(i.src);
+    return i.src.image();
   },
 });
 

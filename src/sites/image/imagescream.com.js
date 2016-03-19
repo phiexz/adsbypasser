@@ -19,7 +19,7 @@ $.register({
     'use strict';
 
     var i = $('#shortURL-content img');
-    $.openImage(i.src);
+    return i.src.image();
   },
 });
 
@@ -32,7 +32,7 @@ $.register({
     'use strict';
 
     var i = $('#imagen img');
-    $.openImage(i.src);
+    return i.src.image();
   },
 });
 

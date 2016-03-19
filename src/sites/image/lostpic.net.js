@@ -7,7 +7,7 @@ $.register({
     'use strict';
 
     var i = $('img.notinline.circle');
-    $.openImage(i.src);
+    return i.src.image();
   },
 });
 

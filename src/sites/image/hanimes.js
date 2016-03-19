@@ -7,7 +7,7 @@ $.register({
     'use strict';
 
     var a = $('.dlbutton2 > a');
-    $.openImage(a.href);
+    return a.href.image();
   },
 });
 

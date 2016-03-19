@@ -7,13 +7,11 @@ $.register({
 
     if (/^\/z/.test(window.location.pathname)) {
       var i = $('#the-image img');
-      $.openImage(i.src);
-      return;
+      return i.src.image();
     }
     var a = $.$('#continue-link a, #main_image');
     if (a) {
-      $.openLink('/z' + window.location.pathname);
-      return;
+      return ('/z' + window.location.pathname).image();
     }
   },
 });

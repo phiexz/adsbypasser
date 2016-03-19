@@ -10,14 +10,14 @@
     },
     ready: function () {
       var a = $('#tablewraper a:nth-child(2)');
-      $.openImage(a.href);
+      return a.href.image();
     },
   });
 
   // second stage
   function run () {
     var i = $('#img_obj');
-    $.openImage(i.src);
+    return i.src.image();
   }
   $.register({
     rule: {

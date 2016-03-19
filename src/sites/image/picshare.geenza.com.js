@@ -4,7 +4,7 @@ $.register({
     'use strict';
 
     var i = $('#picShare_image_container');
-    $.openImage(i.src);
+    return i.src.image();
   },
 });
 

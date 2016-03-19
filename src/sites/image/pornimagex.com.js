@@ -7,7 +7,7 @@ $.register({
     'use strict';
 
     var img = $('#fixed img.border2px');
-    $.openImage(img.src);
+    return img.src.image();
   },
 });
 

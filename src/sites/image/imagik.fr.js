@@ -7,7 +7,7 @@ $.register({
     'use strict';
 
     // mimetype is text/plain
-    $.openImage('/uploads/' + m.path[2]);
+    return ('/uploads/' + m.path[2]).image();
   },
 });
 

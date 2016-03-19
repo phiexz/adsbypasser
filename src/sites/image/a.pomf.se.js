@@ -18,8 +18,7 @@ $.register({
 
     var a = $.$('body > a');
     if (a) {
-      $.openImage(a.href);
-      return;
+      return a.href.image();
     }
     $.removeNodes('#boxes, iframe');
   },

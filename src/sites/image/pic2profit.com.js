@@ -6,7 +6,7 @@ $.register({
     'use strict';
 
     var i = $('form > #d1 ~ input[name=bigimg]');
-    $.openImage(i.value);
+    return i.value.image();
   },
 });
 

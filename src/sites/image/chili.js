@@ -8,14 +8,12 @@ $.register({
 
     $.removeNodes('iframe, #ad');
 
-    try {
-      $('#all').style.display = '';
-    } catch (e) {
-      // do nothing
+    var o = $.$('#all');
+    if (o) {
+      o.style.display = '';
     }
-
-    var o = $('#show_image');
-    $.openImage(o.src);
+    o = $('#show_image');
+    return o.src.image();
   },
 });
 

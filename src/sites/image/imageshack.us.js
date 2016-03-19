@@ -9,7 +9,7 @@
       path: /^\/photo\/.+\/(.+)\/([^\/]+)/,
     },
     start: function (m) {
-      $.openImage(_.T('/f/{0}/{1}/')(m.path[1], m.path[2]));
+      return _.T('/f/{0}/{1}/')(m.path[1], m.path[2]).image();
     },
   });
 
@@ -20,7 +20,7 @@
     },
     ready: function () {
       var i = $('#fullimg');
-      $.openImage(i.src);
+      return i.src.image();
     },
   });
 
