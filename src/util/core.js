@@ -266,6 +266,18 @@
     });
   };
 
+  // FIXME: do we need the sync-version?
+  _.tryThenable = function (msInterval, thenable) {
+    return _.wait(msInterval).then(function () {
+      return thenable;
+    }).then(function (result) {
+      if (result !== _.none) {
+        return result;
+      }
+      return _.tryThenable(msInterval, thenable);
+    });
+  };
+
 
   function log (method, args) {
     if (_._quiet) {
