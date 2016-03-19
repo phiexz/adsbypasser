@@ -6,7 +6,7 @@ $.register({
     'use strict';
 
     var a = $('#wrapper .tombol a');
-    $.openLink(a.href);
+    return a.href.link()
   },
 });
 

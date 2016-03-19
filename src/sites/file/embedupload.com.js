@@ -8,7 +8,7 @@ $.register({
     'use strict';
 
     var downloadPage = $('.categories a[target=_blank]');
-    $.openLink(downloadPage);
+    return downloadPage.link();
   },
 });
 

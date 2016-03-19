@@ -8,13 +8,13 @@ $.register({
 
     // the site's rule
     var location_link = location.hash;
-    $.post(location_link).then(function (data) {
+    return $.post(location_link).then(function (data) {
       data = JSON.parse(data);
       if (!data.hash_data) {
         _.warn('rule changed');
         return;
       }
-      $.openLink(data.direct_link);
+      return data.direct_link.link()
     });
   },
 });

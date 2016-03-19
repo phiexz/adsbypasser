@@ -7,7 +7,7 @@ $.register({
     'use strict';
 
     var matches = $.searchScripts(/<form method="POST" action="([^"]+)">/);
-    $.openLink(matches[1]);
+    return matches[1].link();
   },
 });
 

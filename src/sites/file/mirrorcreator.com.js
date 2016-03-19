@@ -8,8 +8,7 @@ $.register({
 
     var a = $.$('#redirectlink a');
     if (a) {
-      $.openLink(a.href);
-      return;
+      return a.href.link();
     }
 
     a = $('#redirectlink > div.redirecturl');
@@ -17,7 +16,7 @@ $.register({
     if (!a.match(/^http/)) {
       throw new _.AdsBypasserError('not a valid URL');
     }
-    $.openLink(a);
+    return a.link();
   },
 });
 

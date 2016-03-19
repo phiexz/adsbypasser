@@ -6,7 +6,7 @@ $.register({
   start: function (m) {
     'use strict';
 
-    $.openLink('/g/' + m.path[1]);
+    return ('/g/' + m.path[1]).link()
   },
 });
 
@@ -19,7 +19,7 @@ $.register({
     'use strict';
 
     var a = $('#main-content a.btn.btn-default');
-    $.openLink(a.href);
+    return a.href.link()
   },
 });
 

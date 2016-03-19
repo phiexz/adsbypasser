@@ -10,7 +10,7 @@ $.register({
 
     // If we are on the waiting page, reload
     if ($.$('#countDownText')) {
-        $.openLink(document.location.toString());
+      document.location.toString().link();
     }
   },
 });

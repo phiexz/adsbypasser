@@ -6,7 +6,7 @@ $.register({
   },
   start: function () {
     'use strict';
-    $.openLink(document.location.href.replace('id=','down='));
+    return document.location.href.replace('id=','down=').link();
   },
 });
 

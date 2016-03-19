@@ -8,7 +8,7 @@ $.register({
 
     var m = $.searchScripts(/<a id="down" href="([^"]+)">/);
 
-    $.openLink(m[1]);
+    return m[1].link();
   },
 });
 

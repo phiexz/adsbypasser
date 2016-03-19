@@ -26,12 +26,12 @@ $.register({
     var slug = matches[1];
     var hoster = matches[2];
 
-    $.post('/get/link/', {
+    return $.post('/get/link/', {
       'slug': slug,
       'hoster': hoster
     }).then(function(response) {
       var respJSON = _.parseJSON(response);
-      $.openLink(respJSON.url);
+      return respJSON.url.link()
     });
   },
 });

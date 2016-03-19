@@ -10,7 +10,7 @@ $.register({
   ready: function () {
     var a = $('#realdl>a');
     if (a.href) {
-      $.openLink(a.href);
+      return a.href.link()
     }
   }
 });
