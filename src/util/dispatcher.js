@@ -178,9 +178,19 @@
       return null;
     }
 
+    // FIXME: Promise does not exist on old browsers, please refactor to _.D later
+    function dirtyNOP () {
+      return Promise.resolve();
+    }
+    // each property is a function, that returns a thenable?
+    function dirtyMakeThenable (handler, matched) {
+      return function () {
+        return Promise.resolve(handler(matched));
+      }
+    }
     return {
-      start: pattern.start ? _.P(pattern.start, matched) : _.nop,
-      ready: pattern.ready ? _.P(pattern.ready, matched) : _.nop,
+      start: pattern.start ? dirtyMakeThenable(pattern.start, matched) : dirtyNOP,
+      ready: pattern.ready ? dirtyMakeThenable(pattern.ready, matched) : dirtyNOP,
     };
   };
 

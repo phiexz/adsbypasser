@@ -82,7 +82,7 @@
     _.info('working on\n%s \nwith\n%s', window.location.toString(), JSON.stringify($.config));
     disableLeavePrompt($.window);
     disableWindowOpen();
-    handler.start();
+    return handler.start();
   }
 
 
@@ -90,7 +90,7 @@
     // some sites bind the event on body
     disableLeavePrompt($.window.document.body);
     changeTitle();
-    handler.ready();
+    return handler.ready();
   }
 
 
@@ -133,10 +133,20 @@
         _._quiet = true;
       }
 
-      beforeDOMReady(handler);
-
-      waitDOM().then(function () {
-        afterDOMReady(handler);
+      beforeDOMReady(handler).then(function (url) {
+        if (url) {
+          return url();
+        }
+      }).then(function () {
+        return waitDOM();
+      }).then(function () {
+        return afterDOMReady(handler);
+      }).then(function (url) {
+        if (url) {
+          return url();
+        }
+      }).catch(function (e) {
+        _.warn(e);
       });
 
       return;
@@ -156,8 +166,19 @@
         return;
       }
 
-      beforeDOMReady(handler);
-      afterDOMReady(handler);
+      beforeDOMReady(handler).then(function (url) {
+        if (url) {
+          return url();
+        }
+      }).then(function () {
+        return afterDOMReady(handler);
+      }).then(function (url) {
+        if (url) {
+          return url();
+        }
+      }).catch(function (e) {
+        _.warn(e);
+      });
     });
   };
 

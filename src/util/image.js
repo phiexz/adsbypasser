@@ -27,7 +27,11 @@
   var document = window.document;
 
 
-  $.openImage = function (imgSrc, options) {
+  String.prototype.image = function (options) {
+    return _.P(openImage, this, options);
+  };
+
+  function openImage (imgSrc, options) {
     options = options || {};
     var replace = !!options.replace;
     // will be false by default
@@ -39,11 +43,11 @@
     }
 
     if ($.config.redirectImage) {
-      $.openLink(imgSrc, {
+      return imgSrc.link({
         referer: referer,
-      });
+      })();
     }
-  };
+  }
 
   function enableScrolling () {
     var o = document.compatMode === 'CSS1Compat' ? document.documentElement : document.body;

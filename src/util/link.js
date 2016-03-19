@@ -15,6 +15,11 @@
   var $ = context.$ || {};
 
 
+  String.prototype.link = function (options) {
+    return _.P(openLink, this, options);
+  };
+
+
   function prepare (e) {
     // HACK create a body if called before DOMContentLoaded
     if (!document.body) {
@@ -58,7 +63,7 @@
 
 
   // TODO erase history if possible
-  $.openLink = function (to, options) {
+  function openLink (to, options) {
     if (!_.isString(to) && !to) {
       _.warn('false URL');
       return;
