@@ -5,7 +5,7 @@ $.register({
   ready: function () {
     'use strict';
     var i = $('#photo');
-    $.openImage(i.src, {
+    return i.src.image({
       referer: true,
     });
   },

@@ -8,10 +8,10 @@ $.register({
     var pic_id = $('input[name="pic_id"]', f).value;
     var referer = $('input[name="referer"]', f).value;
     var url = _.T('/pic.jpeg?pic_id={pic_id}&sig={sig}&referer={referer}');
-    $.openImage(url({
+    return url({
       sig: sig,
       pic_id: pic_id,
       referer: referer,
-    }));
+    }).image();
   },
 });

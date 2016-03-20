@@ -5,7 +5,7 @@
     // dirty hack, prevent scripts appending elements
     $.window.jQuery.prototype.append = undefined;
     var i = $('img.pic');
-    $.openImage(i.src, {
+    return i.src.image({
       replace: rp,
     });
   }

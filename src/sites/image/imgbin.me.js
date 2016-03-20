@@ -8,6 +8,6 @@ $.register({
 
     // always jpg
     var tpl = _.T('/image/{0}.jpg');
-    $.openImage(tpl(m.path[1]));
+    return tpl(m.path[1]).image();
   },
 });

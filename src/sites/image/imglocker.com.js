@@ -9,6 +9,6 @@ $.register({
   start: function (m) {
     'use strict';
     var url = _.T('//img.imglocker.com{0}_{1}');
-    $.openImage(url(m.path[1], m.path[2]));
+    return url(m.path[1], m.path[2]).image();
   },
 });

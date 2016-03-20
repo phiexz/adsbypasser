@@ -12,7 +12,7 @@ $.register({
     }
 
     f = $('img.img-polaroid');
-    $.openImage(f.src, {
+    return f.src.image({
       referer: true,
     });
   },
