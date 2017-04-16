@@ -1,4 +1,4 @@
-$.register({
+_.register({
   rule: {
     host: [
       /^(www\.)?shink\.in$/,
@@ -7,15 +7,12 @@ $.register({
     ],
     path: /^\/\w+$/,
   },
-  ready: function () {
-    'use strict';
-
-    var f = $('#skip');
+  async ready () {
+    const f = $('#skip');
 
     if (!$.$('#captcha')) {
       // No captcha, we can redirect straight away
       f.submit();
-      return;
     }
 
     // Remove the popup trigger area.
@@ -41,7 +38,7 @@ $.register({
   },
 });
 
-$.register({
+_.register({
   rule: [
     {
       host: [
@@ -55,12 +52,10 @@ $.register({
       path: /^\/ok\/\w+$/,
     },
   ],
-  ready: function () {
-    'use strict';
-
-    var a = $('#btn-main');
-    var i = a.href.lastIndexOf('http');
+  async ready () {
+    let a = $('#btn-main');
+    const i = a.href.lastIndexOf('http');
     a = a.href.substr(i);
-    $.openLink(a);
+    await $.openLink(a);
   },
 });
